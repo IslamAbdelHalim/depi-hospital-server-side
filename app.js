@@ -3,9 +3,9 @@ import morgan from 'morgan';
 import dotenv from 'dotenv';
 import doctorRouter from './routes/doctorRoute.js';
 import clinicRouter from './routes/clinicsRoute.js';
-import authRouter from './routes/authRouter.js';
-import userRouter from './routes/userRouter.js';
-import booking from './routes/bookingRouter.js';
+import authRouter from './routes/authRoute.js';
+import userRouter from './routes/userRoute.js';
+import booking from './routes/bookingRoute.js';
 import {
   ErrorRoutes,
   globalErrorHandling,
