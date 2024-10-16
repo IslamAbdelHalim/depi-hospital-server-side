@@ -11,6 +11,13 @@ export function globalErrorHandling(err, req, res, next) {
   if (process.env.NODE_ENV === 'development') {
     sendErrorDev(err, res);
   } else if (process.env.NODE_ENV === 'production') {
+    if (err.code === 11000) {
+      err = new AppError(err.message, 400);
+    }
+
+    if (err.code === 'ValidationError') {
+      err = new AppError(err.message, 400);
+    }
     sendErrorClient(err, res);
   }
 }

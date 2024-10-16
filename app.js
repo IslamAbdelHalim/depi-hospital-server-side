@@ -1,6 +1,7 @@
 import express from 'express';
 import morgan from 'morgan';
 import dotenv from 'dotenv';
+import cors from 'cors';
 import doctorRouter from './routes/doctorRoute.js';
 import clinicRouter from './routes/clinicsRoute.js';
 import authRouter from './routes/authRoute.js';
@@ -20,6 +21,8 @@ const app = express();
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
+
+app.use(cors());
 
 app.use(express.json());
 

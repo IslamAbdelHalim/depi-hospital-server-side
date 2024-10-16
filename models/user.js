@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 import validator from 'validator';
 import bcrypt from 'bcryptjs';
+import slugify from 'slugify';
 
 const userSchema = new mongoose.Schema({
   username: {
@@ -8,6 +9,7 @@ const userSchema = new mongoose.Schema({
     required: [true, 'Must Enter a username'],
     trim: true,
   },
+  nameSlugs: String,
   email: {
     type: String,
     unique: [true, 'Email is already register'],
@@ -40,6 +42,11 @@ const userSchema = new mongoose.Schema({
     type: Date,
     default: Date.now(),
   },
+});
+
+userSchema.pre('save', async function (next) {
+  this.nameSlugs = slugify(this.username, { lower: true });
+  next();
 });
 
 userSchema.pre('save', async function (next) {
