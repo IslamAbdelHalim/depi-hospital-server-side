@@ -14,6 +14,11 @@ export const getUserById = catchError(async (req, res, next) => {
         as: 'bookings',
       },
     },
+    {
+      $project: {
+        password: 0,
+      },
+    },
   ]);
 
   if (!user) {
@@ -23,7 +28,7 @@ export const getUserById = catchError(async (req, res, next) => {
   res.status(200).json({
     status: 'success',
     data: {
-      user,
+      user: user[0],
     },
   });
 });

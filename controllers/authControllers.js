@@ -41,9 +41,14 @@ export const loginUser = catchError(async (req, res, next) => {
     expiresIn: '4d',
   });
 
+  const { removePass, ...NoPassUser } = user._doc;
+
   res.status(200).json({
     status: 'success',
     token,
+    data: {
+      user: NoPassUser,
+    },
   });
 });
 
