@@ -17,12 +17,16 @@ dotenv.config({ path: './config.env' });
 // start app
 const app = express();
 
-// app.use(morgan('dev'));
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
 
-app.use(cors());
+app.use(
+  cors({
+    origin: 'http://localhost:4200', // Angular app's URL
+    credentials: true, // Allow credentials (cookies) to be sent
+  })
+);
 
 app.use(express.json());
 

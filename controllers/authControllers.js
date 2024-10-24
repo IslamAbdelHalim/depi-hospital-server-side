@@ -17,6 +17,8 @@ export const createUser = catchError(async (req, res, next) => {
 
   const { password, ...user } = newUser._doc;
 
+  res.cookie('token', token);
+
   res.status(201).json({
     status: 'success',
     token,
@@ -42,6 +44,8 @@ export const loginUser = catchError(async (req, res, next) => {
   });
 
   const { removePass, ...NoPassUser } = user._doc;
+
+  res.cookie('token', token);
 
   res.status(200).json({
     status: 'success',

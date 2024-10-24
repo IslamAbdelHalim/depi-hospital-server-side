@@ -10,12 +10,20 @@ const bookingSchema = new mongoose.Schema({
     type: String,
     validate: [validator.isEmail, 'Must Have a mail'],
   },
+  phone: {
+    type: String,
+    require: [true, 'Must Enter a number'],
+  },
+  bookingType: String,
   doctor: {
     type: String,
   },
   clinic: {
     type: String,
   },
+  notes: String,
+  day: String,
+  time: String,
   user: {
     type: mongoose.Schema.Types.ObjectId,
     require: true,
