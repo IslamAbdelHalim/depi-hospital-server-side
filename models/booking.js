@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import validator from 'validator';
 
 const bookingSchema = new mongoose.Schema({
-  username: {
+  fullName: {
     type: String,
     require: true,
   },
