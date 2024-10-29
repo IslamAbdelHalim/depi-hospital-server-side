@@ -37,10 +37,12 @@ const userSchema = new mongoose.Schema({
     type: String,
     minLength: [11, 'Please Enter valid phone'],
   },
-  picture: String,
+  picture: {
+    type: String,
+    default: 'profile.jpg',
+  },
   birthday: {
     type: Date,
-    default: Date.now(),
   },
 });
 

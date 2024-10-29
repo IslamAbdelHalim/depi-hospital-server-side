@@ -9,6 +9,7 @@ export const createUser = catchError(async (req, res, next) => {
     email: req.body.email,
     password: req.body.password,
     passwordConfirm: req.body.passwordConfirm,
+    birthday: req.body.birthday,
   });
 
   const token = jwt.sign({ id: newUser._id }, process.env.SECRET_KEY, {
